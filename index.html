@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greenline Lawn &amp; Landscape · Landing Page Concept by Olha Stalska</title>
+<meta name="description" content="Concept landing page for a fictional San Antonio lawn-care company: scoreboard price estimate, animated mower, WordPress-embeddable sections. Design and code by Olha Stalska.">
+<link rel="canonical" href="https://concepts.stalska-olga.com.ua/greenline/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Olha Stalska">
+<meta property="og:url" content="https://concepts.stalska-olga.com.ua/greenline/">
+<meta property="og:title" content="Greenline Lawn &amp; Landscape · Landing page concept">
+<meta property="og:description" content="A lawn-care landing page with a scoreboard price estimate and an animated mower. Every section pastes into WordPress. Design and code by Olha Stalska.">
+<meta property="og:image" content="https://concepts.stalska-olga.com.ua/greenline/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Greenline landing page: headline Your price is on the board, a scoreboard price estimate and a yellow mower on the lawn">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Greenline Lawn &amp; Landscape · Landing page concept">
+<meta name="twitter:description" content="Scoreboard price estimate, animated mower, WordPress-ready sections. Design and code by Olha Stalska.">
+<meta name="twitter:image" content="https://concepts.stalska-olga.com.ua/greenline/og.png">
+<meta name="theme-color" content="#11301f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Crect width=%2748%27 height=%2748%27 rx=%276%27 fill=%27%23173d2a%27/%3E%3Cpath d=%27M24 38c-6 0-10-2-11-6h5c1 2 3 2 6 2 4 0 6-2 6-5v-2c-1 2-4 3-7 3-6 0-10-4-10-10s4-10 10-10c3 0 6 1 7 3v-3h5v18c0 7-4 10-11 10zm0-14c3 0 6-2 6-5s-3-5-6-5-6 2-6 5 3 5 6 5z%27 fill=%27%23eef0e6%27/%3E%3Cpath d=%27M36 4c3 3 3 8 0 11-3-3-3-8 0-11z%27 fill=%27%23f2b705%27/%3E%3C/svg%3E">
+<style>html,body{margin:0;padding:0;background:#11301f}.demo-credit{box-sizing:border-box;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px) 22px;font:12px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:rgba(185,198,184,.5);text-align:left}.demo-credit a{color:inherit;text-underline-offset:2px;text-decoration-color:rgba(185,198,184,.3)}.demo-credit a:hover{color:#b9c6b8}</style>
+</head>
+<body>
+<!-- =====================================================================
+  GREENLINE LAWN & LANDSCAPE · LANDING PAGE · concept (fictional brand)
+  Design & code: Olha Stalska, https://stalska-olga.com.ua/
+  HOW TO USE IN WORDPRESS
+  - Paste GLC BASE once per page (fonts + shared tokens), in its own
+    Custom HTML block, above the sections.
+  - Every section between "GLC <NAME> START" and "GLC <NAME> END" is a
+    self-contained Custom HTML block. Use any of them, in any order.
+  - All CSS is scoped under .glc; all JS is in IIFEs (no globals, no jQuery).
+  - All copy, prices, phone and buttons are real HTML text.
+  - Animation is one <canvas> in the hero; it pauses off-screen and in
+    hidden tabs, and turns into a still scene for prefers-reduced-motion.
+  - Remove the class "glc--full" from a section to keep it inside a
+    boxed theme column instead of running edge to edge.
+  - The hero price board sends its estimate to the booking section
+    with a DOM event, so the ticket arrives pre-filled.
+  ===================================================================== -->
+<!-- GLC BASE START -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Greenline shared tokens. Root rules use a doubled class so theme selectors such as ".entry-content section" cannot override them. */
+.glc.glc{--glc-board:#173d2a;--glc-board-deep:#11301f;--glc-line:rgba(238,240,230,.16);--glc-chalk:#eef0e6;--glc-chalk-2:#b9c6b8;--glc-plate:#0c1610;--glc-plate-hi:#1b2a20;--glc-yellow:#f2b705;--glc-yellow-hi:#ffc934;--glc-ink:#13231a;--glc-ink-2:#3f5245;--glc-paper:#f1f2ea;--glc-clay:#8f4527;--glc-ease:cubic-bezier(.23,1,.32,1);--glc-ease-io:cubic-bezier(.77,0,.175,1);--glc-ease-drawer:cubic-bezier(.32,.72,0,1);--glc-display:"Archivo","Helvetica Neue",Arial,sans-serif;position:relative;display:block;width:100%;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:var(--glc-board);color:var(--glc-chalk);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;font-weight:400;line-height:1.55;text-align:left;text-transform:none;letter-spacing:0;-webkit-font-smoothing:antialiased;container-type:inline-size}
+.glc.glc.glc--light{--glc-chalk:#13231a;--glc-chalk-2:#46594b;--glc-line:rgba(19,35,26,.18);background:#eef0e6;color:#13231a}
+.glc.glc--light a:focus-visible,.glc.glc--light button:focus-visible,.glc.glc--light input:focus-visible{outline-color:#13231a}
+.glc.glc.glc--full{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.glc *,.glc *::before,.glc *::after{box-sizing:border-box}
+.glc ::selection{background:var(--glc-yellow);color:var(--glc-ink)}
+.glc a{color:inherit}
+.glc p,.glc h1,.glc h2,.glc h3,.glc ol,.glc ul,.glc dl,.glc dd,.glc fieldset,.glc figure{margin:0;padding:0}
+.glc .glc-wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.glc.glc.glc-sec{padding:clamp(72px,9vw,120px) 0}
+.glc .glc-h2{margin:0 0 14px;font-family:var(--glc-display);font-weight:800;font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.04;letter-spacing:-.025em;font-stretch:112%;text-transform:none;color:var(--glc-chalk);text-wrap:balance}
+.glc .glc-lead{max-width:54ch;margin:0;font-size:clamp(1.02rem,1.3vw,1.14rem);line-height:1.6;color:var(--glc-chalk-2)}
+.glc .glc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border:2px solid transparent;border-radius:2px;font:700 16px/1 "Barlow",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color .2s ease,transform 160ms var(--glc-ease),border-color .2s ease,box-shadow .2s ease}
+.glc .glc-btn--go{background:var(--glc-yellow);color:var(--glc-ink);box-shadow:0 6px 14px rgba(0,0,0,.28)}
+.glc .glc-btn--go:hover{background:var(--glc-yellow-hi);color:var(--glc-ink)}
+.glc .glc-btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.glc .glc-btn--go:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.24)}.glc .glc-btn--go:active{transform:scale(.97)}}
+.glc .glc-btn[disabled]{cursor:progress;opacity:.75}
+.glc a:focus-visible,.glc button:focus-visible,.glc input:focus-visible,.glc select:focus-visible,.glc textarea:focus-visible{outline:3px solid var(--glc-yellow);outline-offset:3px}
+.glc .glc-plate{display:inline-grid;place-items:center;border-radius:2px;background:linear-gradient(180deg,var(--glc-plate) calc(50% - 1px),rgba(0,0,0,.7) calc(50% - 1px) 50%,rgba(255,255,255,.06) 50% calc(50% + 1px),#101c14 calc(50% + 1px));color:#f7f7ef;font-family:var(--glc-display);font-weight:800;line-height:1;font-variant-numeric:tabular-nums;box-shadow:0 2px 4px rgba(0,0,0,.4),inset 0 -2px 0 rgba(255,255,255,.05)}
+.glc.glc:focus{outline:none}
+.glc .glc-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:.16em;font-family:var(--glc-display);font-weight:800;font-stretch:112%;font-size:30px;line-height:1;letter-spacing:-.03em;color:var(--glc-chalk)}
+.glc .glc-logo__word{display:block;white-space:nowrap}
+.glc .glc-logo__i{position:relative;display:inline-block}
+.glc .glc-logo__blade{position:absolute;left:50%;top:-.2em;width:.28em;height:.42em;transform:translateX(-50%) rotate(0deg);transform-origin:50% 100%;transition:transform 420ms var(--glc-ease)}
+.glc .glc-logo__mow{display:block;height:.15em;min-height:4px;background:repeating-linear-gradient(90deg,#2f7a3d 0 .5em,#4f9a45 .5em 1em)}
+@media (hover:hover) and (pointer:fine){.glc a:hover .glc-logo__blade{transform:translateX(-50%) rotate(14deg)}}
+@media (prefers-reduced-motion:no-preference){.glc-hero .glc-logo__mow{animation:glc-logo-mow 900ms var(--glc-ease-io) 300ms both}.glc-hero .glc-logo__blade{animation:glc-logo-blade 700ms var(--glc-ease) 900ms both}}
+@keyframes glc-logo-mow{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes glc-logo-blade{0%{transform:translateX(-50%) scale(0.4) rotate(-30deg);opacity:0}60%{transform:translateX(-50%) scale(1.1) rotate(8deg);opacity:1}100%{transform:translateX(-50%) scale(1) rotate(0deg);opacity:1}}
+.glc .glc-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+.glc .glc-icon{width:18px;height:18px;flex:none}
+@media (prefers-reduced-motion:no-preference){.glc .glc-h2.glc-reveal{clip-path:inset(-20% -5% 100% -5%);transform:translateY(40%);transition:clip-path 800ms var(--glc-ease-io),transform 800ms var(--glc-ease)}.glc .glc-h2.glc-reveal.is-in{clip-path:inset(-20% -5% -20% -5%);transform:none}.glc .glc-h2.glc-reveal+.glc-lead{opacity:0;transform:translateY(10px);transition:opacity 600ms var(--glc-ease) 250ms,transform 600ms var(--glc-ease) 250ms}.glc .glc-h2.glc-reveal.is-in+.glc-lead{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.glc .glc-btn{transition:none}.glc .glc-btn:active{transform:none}}
+</style>
+<script>
+/* Greenline in-page links: smooth scroll to the section and move focus there. Respects prefers-reduced-motion. */
+(function () {
+  "use strict";
+  if (document.documentElement.getAttribute("data-glc-scroll")) { return; }
+  document.documentElement.setAttribute("data-glc-scroll", "1");
+  var mq = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  document.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) { return; }
+    var a = e.target && e.target.closest ? e.target.closest(".glc a[href^='#']") : null;
+    if (!a) { return; }
+    var id = a.getAttribute("href").slice(1);
+    var target = id ? document.getElementById(id) : null;
+    if (!target) { return; }
+    e.preventDefault();
+    var smooth = !(mq && mq.matches);
+    target.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    if (!target.hasAttribute("tabindex")) { target.setAttribute("tabindex", "-1"); }
+    try { target.focus({ preventScroll: true }); } catch (err) {}
+    if (window.history && window.history.replaceState) { try { window.history.replaceState(null, "", "#" + id); } catch (err) {} }
+  });
+  /* section headings wipe up into view the first time they are scrolled to */
+  function reveal() {
+    if ((mq && mq.matches) || !("IntersectionObserver" in window)) { return; }
+    var heads = document.querySelectorAll(".glc .glc-h2:not(.glc-reveal)");
+    if (!heads.length) { return; }
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) { entries[i].target.classList.add("is-in"); io.unobserve(entries[i].target); }
+      }
+    }, { rootMargin: "0px 0px -12% 0px" });
+    for (var h = 0; h < heads.length; h++) { heads[h].classList.add("glc-reveal"); io.observe(heads[h]); }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", reveal); } else { reveal(); }
+})();
+</script>
+<!-- GLC BASE END -->
+<!-- GLC HERO START -->
+<style>
+/* Greenline hero: scoreboard price estimate over an outfield with the mower */
+.glc-hero.glc-hero.glc-hero{--glc-lawn:clamp(170px,25vh,240px);overflow:hidden;isolation:isolate;background:radial-gradient(circle at 87% 23%,rgba(255,212,110,.62) 0 64px,rgba(255,212,110,.2) 66px 150px,transparent 300px),linear-gradient(180deg,#fbf5e6 0%,#f5f1df 55%,#e9efd6 100%)}
+.glc-hero .glc-hero__hills{position:absolute;z-index:0;left:0;right:0;bottom:calc(var(--glc-lawn) - 90px);width:100%;height:190px;pointer-events:none}
+.glc-hero .glc-board{--glc-chalk:#eef0e6;--glc-chalk-2:#b9c6b8;--glc-line:rgba(238,240,230,.16);color:#eef0e6}
+.glc-hero .glc-hero__canvas{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;pointer-events:none}
+.glc-hero .glc-hero__lawn{position:absolute;z-index:1;left:0;right:0;bottom:0;height:var(--glc-lawn);pointer-events:none;background:linear-gradient(180deg,transparent 0 18%,#4f923a 18%,#2b6323 100%)}
+.glc-hero.glc-hero--js .glc-hero__lawn{background:none}
+.glc-hero .glc-hero__inner{position:relative;z-index:3;padding-top:18px;padding-bottom:calc(var(--glc-lawn) + 36px)}
+.glc-hero .glc-hero__bar{display:flex;align-items:center;gap:28px;min-height:52px}
+.glc-hero .glc-hero__logo{display:inline-flex;align-items:center;padding-top:6px;color:var(--glc-chalk);text-decoration:none;border:0;box-shadow:none;margin-right:auto}
+.glc-hero .glc-hero__logo .glc-logo{font-size:30px}
+.glc-hero .glc-hero__nav{display:flex;gap:26px}
+.glc-hero .glc-hero__nav a{position:relative;padding:4px 0;font-weight:600;font-size:15px;color:var(--glc-chalk);text-decoration:none;border:0;box-shadow:none}
+.glc-hero .glc-hero__nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#2f7a3d;transform:scaleX(0);transform-origin:right;transition:transform 220ms var(--glc-ease)}
+.glc-hero .glc-hero__nav a:hover{color:var(--glc-chalk)}
+@media (hover:hover) and (pointer:fine){.glc-hero .glc-hero__nav a:hover::after{transform:scaleX(1);transform-origin:left}}
+.glc-hero .glc-hero__phone{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--glc-line);border-radius:2px;font-weight:700;font-size:15px;white-space:nowrap;color:var(--glc-chalk);text-decoration:none;transition:border-color .2s ease}
+.glc-hero .glc-hero__phone:hover{border-color:#13231a;background:#fff;color:var(--glc-chalk)}
+.glc-hero .glc-hero__phone svg{color:#2f7a3d}
+.glc-hero .glc-hero__phone{background:rgba(255,255,255,.55)}
+.glc-hero .glc-hero__title{margin:clamp(56px,9vh,96px) 0 16px;font-family:var(--glc-display);font-weight:800;font-size:clamp(2.6rem,5.2vw,4.5rem);line-height:1;letter-spacing:-.03em;font-stretch:112%;text-transform:none;color:var(--glc-chalk);text-wrap:balance}
+.glc-hero .glc-hero__lead{max-width:46ch;margin:0 0 28px;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.55;color:var(--glc-chalk-2)}
+.glc-hero .glc-board{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.3fr) minmax(0,1.1fr) minmax(290px,auto);border:2px solid var(--glc-line);border-radius:2px;background:var(--glc-board-deep);box-shadow:0 14px 30px rgba(5,20,12,.35)}
+.glc-hero .glc-board__col{min-width:0;margin:0;padding:16px 18px 18px;border:0;border-right:1px solid var(--glc-line)}
+.glc-hero .glc-board__head{display:block;float:left;width:100%;margin:0 0 12px;padding:0;font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1.2;letter-spacing:0;text-transform:none;color:var(--glc-chalk-2)}
+.glc-hero .glc-board__opts{clear:both;display:grid;gap:8px}
+.glc-hero .glc-board__opts--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.glc-hero .glc-board__opts--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.glc-hero .glc-board__in{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.glc-hero .glc-opt{display:grid;place-content:center;gap:6px;height:80px;padding:10px 12px;min-width:0;border-radius:2px;background:var(--glc-plate);color:#f7f7ef;text-align:center;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;box-shadow:0 2px 4px rgba(0,0,0,.4);transition:background-color .2s ease,color .2s ease,transform 160ms var(--glc-ease)}
+.glc-hero .glc-opt:active{transform:scale(.96)}
+.glc-hero .glc-opt b{font-family:var(--glc-display);font-weight:700;font-size:21px;line-height:1;letter-spacing:0;text-transform:uppercase}
+.glc-hero .glc-board__opts--2 .glc-opt b{font-size:16px;white-space:nowrap}
+.glc-hero .glc-opt span{font-size:12.5px;font-weight:500;line-height:1.25;white-space:nowrap;color:var(--glc-chalk-2)}
+.glc-hero .glc-opt:hover{background:var(--glc-plate-hi)}
+.glc-hero .glc-board__in:checked+.glc-opt{background:var(--glc-yellow);color:var(--glc-ink)}
+.glc-hero .glc-board__in:checked+.glc-opt span{color:var(--glc-ink-2)}
+.glc-hero .glc-board__in:focus-visible+.glc-opt{outline:3px solid var(--glc-yellow);outline-offset:3px}
+.glc-hero .glc-board__tot{display:flex;align-items:stretch;gap:26px;padding:16px 22px 18px}
+.glc-hero .glc-tot{display:flex;flex-direction:column}
+.glc-hero .glc-tot__row{margin-top:auto;height:80px;align-items:flex-end}
+.glc-hero .glc-plate.is-off{display:none}
+.glc-hero .glc-tot__label{display:block;margin:0 0 12px;font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1.2;letter-spacing:0;text-transform:none;color:var(--glc-chalk-2)}
+.glc-hero .glc-tot__row{display:flex;align-items:center;gap:5px}
+.glc-hero .glc-tot__cur{margin-right:3px;font-family:var(--glc-display);font-weight:800;font-size:24px;line-height:1;color:var(--glc-yellow)}
+.glc-hero .glc-tot .glc-plate{width:48px;height:80px;font-size:42px}
+.glc-hero .glc-tot__cur{align-self:center}
+.glc-hero .glc-plate.is-flip{animation:glc-flip 300ms var(--glc-ease) both;animation-delay:var(--glc-d,0ms)}
+@keyframes glc-flip{from{transform:perspective(240px) rotateX(-80deg);filter:brightness(.5) blur(2px)}to{transform:perspective(240px) rotateX(0);filter:brightness(1) blur(0)}}
+.glc-hero .glc-hero__after{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:16px}
+.glc-hero .glc-hero__note{margin:0;max-width:62ch;font-size:15px;line-height:1.5;color:var(--glc-chalk-2)}
+.glc-hero .glc-hero__hint{position:absolute;z-index:3;right:clamp(20px,5vw,72px);bottom:calc(var(--glc-lawn) - 8px);margin:0;padding:0;font-size:14px;font-weight:600;line-height:20px;letter-spacing:0;color:#46594b;pointer-events:none;white-space:nowrap;transition:opacity .6s ease}
+.glc-hero .glc-hero__hint.is-hidden{opacity:0}
+.glc-hero:not(.glc-hero--js) .glc-hero__hint{display:none}
+.glc-hero .glc-hero__hint-touch{display:none}
+@media (hover:none){.glc-hero .glc-hero__hint-mouse{display:none}.glc-hero .glc-hero__hint-touch{display:inline}}
+@container (max-width:1100px){.glc-hero .glc-hero__nav{display:none}}
+@container (max-width:1240px){
+.glc-hero .glc-board{grid-template-columns:1fr 1fr}
+.glc-hero .glc-board__col{border-right:0;border-bottom:1px solid var(--glc-line)}
+.glc-hero .glc-board__col--lot{grid-column:1 / -1}
+.glc-hero .glc-board__col--often{border-right:1px solid var(--glc-line)}
+.glc-hero .glc-board__tot{grid-column:1 / -1}
+}
+@media (max-width:640px){.glc-hero.glc-hero.glc-hero{--glc-lawn:clamp(150px,21vh,180px);background:radial-gradient(circle at 92% 6%,rgba(255,212,110,.55) 0 40px,rgba(255,212,110,.18) 42px 96px,transparent 190px),linear-gradient(180deg,#fbf5e6 0%,#f5f1df 55%,#e9efd6 100%)}}
+@container (max-width:640px){
+.glc-hero .glc-hero__inner{padding-top:14px;padding-bottom:calc(var(--glc-lawn) + 64px)}
+.glc-hero .glc-hero__logo .glc-logo{font-size:25px}
+.glc-hero .glc-hero__title{margin-top:44px}
+.glc-hero .glc-board{grid-template-columns:1fr}
+.glc-hero .glc-board__col--often{border-right:0}
+.glc-hero .glc-board__col{padding:14px}
+.glc-hero .glc-opt{height:70px}
+.glc-hero .glc-opt b{font-size:18px}
+.glc-hero .glc-opt span{font-size:11.5px}
+.glc-hero .glc-board__tot{padding:14px;gap:22px}
+.glc-hero .glc-hero__after{flex-direction:column-reverse;align-items:stretch}
+.glc-hero .glc-hero__after .glc-btn{width:100%}
+.glc-hero .glc-tot .glc-plate{width:40px;height:70px;font-size:34px}
+.glc-hero .glc-tot__row{height:70px}
+.glc-hero .glc-hero__hint{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--glc-lawn) + 4px);font-size:13px}
+}
+/* narrow column: the phone collapses to an icon button, the number stays readable to screen readers */
+@container (max-width:460px){.glc-hero .glc-hero__phone{width:46px;height:46px;padding:0;justify-content:center}.glc-hero .glc-hero__phone-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.glc-hero .glc-hero__phone svg{width:20px;height:20px}}
+@media (prefers-reduced-motion:no-preference){.glc-hero .glc-hero__bar,.glc-hero .glc-hero__title,.glc-hero .glc-hero__lead,.glc-hero .glc-board,.glc-hero .glc-hero__after{animation:glc-rise 600ms var(--glc-ease) both}.glc-hero .glc-hero__title{animation-delay:60ms}.glc-hero .glc-hero__lead{animation-delay:120ms}.glc-hero .glc-board{animation-delay:180ms}.glc-hero .glc-hero__after{animation-delay:240ms}}
+@keyframes glc-rise{from{opacity:0;transform:translateY(12px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+@media (prefers-reduced-motion:reduce){.glc-hero .glc-plate.is-flip{animation:none}.glc-hero .glc-hero__hint{display:none}.glc-hero .glc-opt{transition:none}}
+</style>
+<section class="glc glc-hero glc--light glc--full" id="glc-top" aria-label="Greenline Lawn and Landscape: lawn mowing in San Antonio with an instant price">
+<svg class="glc-hero__hills" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 120 C160 70 320 60 520 96 C700 128 860 52 1060 62 C1230 70 1340 104 1440 92 V190 H0 Z" fill="#d6e2bd"/><path d="M0 150 C200 112 380 122 560 140 C760 160 920 108 1120 112 C1280 116 1370 134 1440 130 V190 H0 Z" fill="#bcd39b"/></svg>
+<canvas class="glc-hero__canvas" aria-hidden="true"></canvas>
+<div class="glc-hero__lawn" aria-hidden="true"></div>
+<div class="glc-hero__inner glc-wrap">
+<header class="glc-hero__bar">
+<a class="glc-hero__logo" href="#glc-top" aria-label="Greenline Lawn and Landscape, back to top"><span class="glc-logo" aria-hidden="true"><span class="glc-logo__word">greenl<span class="glc-logo__i">&#305;<svg class="glc-logo__blade" viewBox="0 0 10 16" aria-hidden="true" focusable="false"><path d="M5 0C9 4 9 11 5 16C1 11 1 4 5 0Z" fill="#f2b705"/></svg></span>ne</span><span class="glc-logo__mow"></span></span></a>
+<nav class="glc-hero__nav" aria-label="Sections"><a href="#glc-season">Season</a><a href="#glc-visit">The visit</a><a href="#glc-route">Route days</a><a href="#glc-book">Book</a></nav>
+<a class="glc-hero__phone" href="tel:+12105550136"><svg class="glc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="glc-hero__phone-txt">(210) 555-0136</span></a>
+</header>
+<h1 class="glc-hero__title">Your price is on the board.</h1>
+<p class="glc-hero__lead">Weekly mowing, edging and cleanup across San Antonio. Pick your yard size and the board does the math.</p>
+<form class="glc-board" action="#glc-book" aria-label="Price estimate" novalidate>
+<fieldset class="glc-board__col glc-board__col--lot">
+<legend class="glc-board__head">Yard size, sq ft</legend>
+<div class="glc-board__opts glc-board__opts--4">
+<input class="glc-board__in" type="radio" name="glc-lot" id="glc-lot-s" value="s"><label class="glc-opt" for="glc-lot-s"><b>S</b><span>under 5k</span></label>
+<input class="glc-board__in" type="radio" name="glc-lot" id="glc-lot-m" value="m" checked><label class="glc-opt" for="glc-lot-m"><b>M</b><span>5k-10k</span></label>
+<input class="glc-board__in" type="radio" name="glc-lot" id="glc-lot-l" value="l"><label class="glc-opt" for="glc-lot-l"><b>L</b><span>10k-20k</span></label>
+<input class="glc-board__in" type="radio" name="glc-lot" id="glc-lot-xl" value="xl"><label class="glc-opt" for="glc-lot-xl"><b>XL</b><span>20k+</span></label>
+</div>
+</fieldset>
+<fieldset class="glc-board__col glc-board__col--often">
+<legend class="glc-board__head">How often</legend>
+<div class="glc-board__opts glc-board__opts--2">
+<input class="glc-board__in" type="radio" name="glc-often" id="glc-often-w" value="weekly" checked><label class="glc-opt" for="glc-often-w"><b>Weekly</b><span>in season</span></label>
+<input class="glc-board__in" type="radio" name="glc-often" id="glc-often-b" value="biweekly"><label class="glc-opt" for="glc-often-b"><b>2 weeks</b><span>+$10 a visit</span></label>
+</div>
+</fieldset>
+<fieldset class="glc-board__col glc-board__col--extras">
+<legend class="glc-board__head">Extras</legend>
+<div class="glc-board__opts glc-board__opts--2">
+<input class="glc-board__in" type="checkbox" name="glc-extra" id="glc-extra-beds" value="beds"><label class="glc-opt" for="glc-extra-beds"><b>Beds</b><span>trim +$15</span></label>
+<input class="glc-board__in" type="checkbox" name="glc-extra" id="glc-extra-bag" value="bag"><label class="glc-opt" for="glc-extra-bag"><b>Bag it</b><span>bag +$8</span></label>
+</div>
+</fieldset>
+<div class="glc-board__tot">
+<div class="glc-tot glc-tot--big"><span class="glc-tot__label" id="glc-tot-visit-l">Per visit</span><span class="glc-tot__row" aria-labelledby="glc-tot-visit-l" data-glc-plates="visit"><span class="glc-tot__cur" aria-hidden="true">$</span><span class="glc-plate" aria-hidden="true"></span><span class="glc-plate" aria-hidden="true">6</span><span class="glc-plate" aria-hidden="true">0</span></span></div>
+<div class="glc-tot glc-tot--small"><span class="glc-tot__label" id="glc-tot-month-l">Per month</span><span class="glc-tot__row" aria-labelledby="glc-tot-month-l" data-glc-plates="month"><span class="glc-tot__cur" aria-hidden="true">$</span><span class="glc-plate" aria-hidden="true">2</span><span class="glc-plate" aria-hidden="true">6</span><span class="glc-plate" aria-hidden="true">0</span></span></div>
+</div>
+<p class="glc-sr" aria-live="polite" data-glc-say>Estimate: $60 per visit, about $260 a month.</p>
+</form>
+<div class="glc-hero__after"><p class="glc-hero__note" data-glc-note>Edging, string trim and blowing come with every visit. We confirm the price after a first look at the yard.</p><a class="glc-btn glc-btn--go" href="#glc-book">Book a first cut</a></div>
+</div>
+<p class="glc-hero__hint" aria-hidden="true"><span class="glc-hero__hint-mouse">Point at the grass to steer the mower</span><span class="glc-hero__hint-touch">Tap the grass to steer the mower</span></p>
+</section>
+<script>
+/* Greenline hero: price board + mower canvas. Vanilla JS, no globals, safe to minify or combine. */
+(function () {
+  "use strict";
+  var PRICE = { s: 45, m: 60, l: 85 };
+  var EXTRA = { beds: 15, bag: 8 };
+  var LOT_NAME = { s: "Small yard", m: "Medium yard", l: "Large yard", xl: "Extra large yard" };
+  var ROW_COLORS = [
+    ["#6fa34a", "#629842", "#7cae52", "#58903c", "#a3cd73"],
+    ["#4f923a", "#428531", "#5c9f42", "#3a7a2b", "#8bbd5c"],
+    ["#3a7c29", "#316f26", "#448a2f", "#2b6323", "#76ab48"]
+  ];
+  function initHero(root) {
+    var canvas = root.querySelector(".glc-hero__canvas");
+    var lawnEl = root.querySelector(".glc-hero__lawn");
+    var hintEl = root.querySelector(".glc-hero__hint");
+    var board = root.querySelector(".glc-board");
+    var motionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    function prefersReduced() { return !!(motionQuery && motionQuery.matches); }
+    function now() { return window.performance ? window.performance.now() : Date.now(); }
+    function rand(a, b) { return a + Math.random() * (b - a); }
+    var passMower = function () {};
+    /* ---------- price board ---------- */
+    function readBoard() {
+      var lot = (board.querySelector("input[name='glc-lot']:checked") || {}).value || "m";
+      var often = (board.querySelector("input[name='glc-often']:checked") || {}).value || "weekly";
+      var extras = [], boxes = board.querySelectorAll("input[name='glc-extra']");
+      for (var i = 0; i < boxes.length; i++) { if (boxes[i].checked) { extras.push(boxes[i].value); } }
+      return { lot: lot, often: often, extras: extras };
+    }
+    function estimate(s) {
+      if (!PRICE[s.lot]) { return { lot: s.lot, often: s.often, extras: s.extras, visit: null, month: null }; }
+      var v = PRICE[s.lot] + (s.often === "biweekly" ? 10 : 0);
+      for (var i = 0; i < s.extras.length; i++) { v += EXTRA[s.extras[i]] || 0; }
+      var m = Math.round((v * (s.often === "biweekly" ? 26 : 52) / 12) / 5) * 5;
+      return { lot: s.lot, often: s.often, extras: s.extras, visit: v, month: m };
+    }
+    /* split-flap roll: the plate clacks through the digits in between, then settles */
+    function roll(el, to, delay) {
+      if (el.glcTimer) { window.clearTimeout(el.glcTimer); }
+      var from = el.textContent, seq = [];
+      if (/^\d$/.test(from) && /^\d$/.test(to)) {
+        var a = +from, b = +to, up = b > a;
+        for (var d = a; d !== b;) { d = up ? d + 1 : d - 1; seq.push(String(d)); }
+      } else {
+        for (var r = 0; r < 4; r++) { seq.push(String((Math.random() * 10) | 0)); }
+        seq.push(to);
+      }
+      if (seq.length > 6) { seq = seq.slice(seq.length - 6); }
+      var k = 0;
+      function tick() {
+        var last = k === seq.length - 1;
+        el.textContent = seq[k];
+        el.animate([
+          { transform: "perspective(240px) rotateX(-78deg)", filter: "brightness(.5)" },
+          { transform: "perspective(240px) rotateX(0deg)", filter: "brightness(1)" }
+        ], { duration: last ? 240 : 70, easing: "cubic-bezier(.23,1,.32,1)" });
+        k++;
+        if (!last) { el.glcTimer = window.setTimeout(tick, 70); } else { el.glcTimer = 0; }
+      }
+      el.glcTimer = window.setTimeout(tick, delay);
+    }
+    function setPlates(group, text, animate) {
+      var plates = board.querySelectorAll("[data-glc-plates='" + group + "'] .glc-plate");
+      var cur = board.querySelector("[data-glc-plates='" + group + "'] .glc-tot__cur");
+      var chars = String(text);
+      while (chars.length < plates.length) { chars = " " + chars; }
+      if (cur) { cur.style.visibility = /^\s*\d+$/.test(text) ? "visible" : "hidden"; }
+      var lit = false;
+      for (var i = 0; i < plates.length; i++) {
+        var c = chars.charAt(i) === " " ? "" : chars.charAt(i);
+        if (c) { lit = true; }
+        plates[i].classList.toggle("is-off", !lit && i < plates.length - 2);
+        if (plates[i].textContent !== c) {
+          if (animate && plates[i].animate) { roll(plates[i], c, i * 70); } else { plates[i].textContent = c; }
+        }
+      }
+    }
+    function update(animate) {
+      var e = estimate(readBoard());
+      var say = board.querySelector("[data-glc-say]");
+      var note = root.querySelector("[data-glc-note]");
+      if (e.visit === null) {
+        setPlates("visit", "ASK", animate);
+        setPlates("month", "---", animate);
+        if (say) { say.textContent = "Yards over 20,000 square feet are priced on site."; }
+        if (note) { note.textContent = "Yards over 20,000 sq ft get a price on site. Book a first look and we'll walk it with you."; }
+      } else {
+        setPlates("visit", String(e.visit), animate);
+        setPlates("month", String(e.month), animate);
+        if (say) { say.textContent = "Estimate: $" + e.visit + " per visit, about $" + e.month + " a month."; }
+        if (note) { note.textContent = "Edging, string trim and blowing come with every visit. We confirm the price after a first look at the yard."; }
+      }
+      e.lotName = LOT_NAME[e.lot];
+      try { root.setAttribute("data-glc-estimate", JSON.stringify(e)); } catch (err) {}
+      var ev;
+      try { ev = new CustomEvent("glc:estimate", { detail: e }); } catch (err) { ev = document.createEvent("CustomEvent"); ev.initCustomEvent("glc:estimate", false, false, e); }
+      document.dispatchEvent(ev);
+      return e;
+    }
+    if (board) {
+      board.addEventListener("change", function () { update(!prefersReduced()); passMower(); });
+      board.addEventListener("submit", function (ev) { ev.preventDefault(); });
+      update(false);
+    }
+    /* ---------- mower canvas ---------- */
+    if (!canvas || !canvas.getContext) { return; }
+    var ctx = canvas.getContext("2d");
+    if (!ctx) { return; }
+    root.classList.add("glc-hero--js");
+    var W = 0, H = 0, dpr = 1, lawnTop = 0, lawnH = 0, trackH = 18, k = 1;
+    var rows = [], clips = [];
+    var mower = { x: 0, target: 0, dir: -1, wheel: 0, scale: 1, ground: 0 };
+    var pointer = { x: -999, y: -999, power: 0, mouse: false };
+    var groundGrad = null;
+    var time = 0, last = 0, raf = 0, live = false, inView = true, lastInput = 0;
+    var lastScroll = window.pageYOffset || 0, hintGone = false;
+    function hideHint() { if (hintEl && !hintGone) { hintGone = true; hintEl.classList.add("is-hidden"); } }
+    function makeRow(base, spacing, hMin, hMax, wMin, wMax, colors, jitter) {
+      var n = Math.ceil(W / spacing) + 2;
+      var row = {
+        base: base, n: n, colors: colors,
+        x: new Float32Array(n), full: new Float32Array(n), cur: new Float32Array(n),
+        ph: new Float32Array(n), w: new Float32Array(n), shade: new Uint8Array(n), by: new Float32Array(n),
+        tx: new Float32Array(n), ty: new Float32Array(n), cx: new Float32Array(n)
+      };
+      for (var i = 0; i < n; i++) {
+        row.x[i] = (i - 1) * spacing + rand(-spacing * 0.4, spacing * 0.4);
+        row.full[i] = rand(hMin, hMax) * k;
+        row.cur[i] = row.full[i];
+        row.ph[i] = rand(0, 6.28);
+        row.w[i] = rand(wMin, wMax);
+        row.shade[i] = (Math.random() * 4) | 0;
+        row.by[i] = rand(-jitter, jitter);
+      }
+      return row;
+    }
+    function resize() {
+      var r = root.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width));
+      H = Math.max(1, Math.round(r.height));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      lawnH = lawnEl ? lawnEl.offsetHeight : H * 0.24;
+      lawnTop = H - lawnH;
+      trackH = lawnH * 0.2;
+      k = lawnH / 220;
+      var narrow = W < 600, sp = narrow ? 1.3 : 1, gTop = lawnTop + trackH, gH = H - gTop;
+      rows = [
+        makeRow(gTop + gH * 0.14, 3.2 * sp, 20, 34, 1.3, 2.1, ROW_COLORS[0], gH * 0.05),
+        makeRow(gTop + gH * 0.52, 3.7 * sp, 34, 54, 1.8, 2.7, ROW_COLORS[1], gH * 0.07),
+        makeRow(H + 8, 4.3 * sp, 78, 120, 2.4, 3.7, ROW_COLORS[2], 0)
+      ];
+      mower.scale = Math.max(0.6, Math.min(1.02, lawnH / 230)) * (narrow ? 0.85 : 1);
+      mower.ground = H - lawnH * 0.2;
+      mower.x = W * 0.72;
+      mower.target = W * 0.14;
+      mower.dir = -1;
+      clips.length = 0;
+      groundGrad = ctx.createLinearGradient(0, gTop, 0, H);
+      groundGrad.addColorStop(0, "#4f923a");
+      groundGrad.addColorStop(0.55, "#3c8030");
+      groundGrad.addColorStop(1, "#2b6323");
+      if (prefersReduced()) { stillScene(); }
+      if (!live) { draw(); }
+    }
+    function stillScene() {
+      mower.x = W * (W < 600 ? 0.62 : 0.7);
+      mower.dir = -1;
+      for (var r = 0; r < rows.length; r++) {
+        var row = rows[r];
+        for (var i = 0; i < row.n; i++) {
+          row.cur[i] = (row.x[i] > mower.x && row.x[i] < mower.x + W * 0.26) ? row.full[i] * 0.24 : row.full[i];
+        }
+      }
+    }
+    passMower = function () {
+      if (!live) { return; }
+      mower.target = mower.x < W / 2 ? W * 0.9 : W * 0.1;
+      lastInput = now();
+    };
+    function step(dt) {
+      var t = now();
+      var sc = window.pageYOffset || 0, d = sc - lastScroll;
+      lastScroll = sc;
+      if (d !== 0) {
+        mower.target = Math.max(W * 0.06, Math.min(W * 0.94, mower.target + d * 1.5));
+        lastInput = t;
+        if (Math.abs(d) > 4) { hideHint(); }
+      }
+      if (t - lastInput > 3200 && Math.abs(mower.target - mower.x) < 6) {
+        mower.target = mower.x < W / 2 ? W * 0.9 : W * 0.1;
+      }
+      var idle = t - lastInput > 3200;
+      var maxV = (idle ? 1.5 : 4.2) * dt;
+      var v = Math.max(-maxV, Math.min(maxV, (mower.target - mower.x) * 0.06 * dt));
+      mower.x += v;
+      if (Math.abs(v) > 0.12) { mower.dir = v > 0 ? 1 : -1; }
+      mower.wheel += v / (11 * mower.scale);
+      if (!pointer.mouse) { pointer.power *= Math.pow(0.95, dt); }
+      var half = 44 * mower.scale, moving = Math.abs(v) > 0.2;
+      for (var r = 0; r < rows.length; r++) {
+        var row = rows[r];
+        for (var i = 0; i < row.n; i++) {
+          var full = row.full[i];
+          if (moving && Math.abs(row.x[i] - mower.x) < half && row.cur[i] > full * 0.24) {
+            if (row.cur[i] > full * 0.55 && clips.length < 140 && Math.random() < 0.35) {
+              clips.push({ x: row.x[i], y: Math.min(row.base, mower.ground) - row.cur[i] * 0.4, vx: -mower.dir * rand(0.8, 3.2), vy: rand(-3.6, -1.2), a: rand(0, 6.28), va: rand(-0.3, 0.3), c: row.colors[4], floor: mower.ground + rand(0, 16) });
+            }
+            row.cur[i] = full * 0.24;
+          } else if (row.cur[i] < full) {
+            row.cur[i] = Math.min(full, row.cur[i] + full * 0.0021 * dt);
+          }
+        }
+      }
+      for (var c = clips.length - 1; c >= 0; c--) {
+        var cl = clips[c];
+        cl.vy += 0.16 * dt;
+        cl.x += cl.vx * dt;
+        cl.y += cl.vy * dt;
+        cl.a += cl.va * dt;
+        if (cl.y > cl.floor) { clips.splice(c, 1); }
+      }
+    }
+    function computeTips(row) {
+      var gust = Math.sin(time * 0.55) * 0.06;
+      var R = W < 600 ? 80 : 110, pr = pointer.power > 0.02 && pointer.y > lawnTop - 60;
+      for (var i = 0; i < row.n; i++) {
+        var x = row.x[i], h = row.cur[i];
+        var ang = Math.sin(time * 1.7 + x * 0.011 + row.ph[i]) * 0.09 + Math.sin(time * 0.8 + x * 0.004) * 0.06 + gust;
+        if (pr) {
+          var dx = x - pointer.x, ad = dx < 0 ? -dx : dx;
+          if (ad < R) { var f = 1 - ad / R; ang += (dx < 0 ? -1 : 1) * f * f * 0.55 * pointer.power; }
+        }
+        row.tx[i] = x + Math.sin(ang) * h;
+        row.ty[i] = row.base + row.by[i] - Math.cos(ang) * h;
+        row.cx[i] = x + Math.sin(ang) * h * 0.45;
+      }
+    }
+    function drawRow(row) {
+      computeTips(row);
+      for (var b = 0; b < 5; b++) {
+        ctx.beginPath();
+        for (var i = 0; i < row.n; i++) {
+          var shade = row.cur[i] < row.full[i] * 0.62 ? 4 : row.shade[i];
+          if (shade !== b) { continue; }
+          var x = row.x[i], w = row.w[i], h = row.cur[i], cx = row.cx[i], base = row.base + row.by[i];
+          ctx.moveTo(x - w, base);
+          ctx.quadraticCurveTo(cx - w * 0.4, base - h * 0.5, row.tx[i], row.ty[i]);
+          ctx.quadraticCurveTo(cx + w * 0.4, base - h * 0.5, x + w, base);
+        }
+        ctx.fillStyle = row.colors[b];
+        ctx.fill();
+      }
+    }
+    function roundRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+    function wheel(cx, cy, r) {
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832); ctx.fillStyle = "#121b15"; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, r * 0.42, 0, 6.2832); ctx.fillStyle = "#cfd6c8"; ctx.fill();
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(mower.wheel);
+      ctx.strokeStyle = "#7d8a78"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(-r * 0.4, 0); ctx.lineTo(r * 0.4, 0); ctx.moveTo(0, -r * 0.4); ctx.lineTo(0, r * 0.4); ctx.stroke();
+      ctx.restore();
+    }
+    /* side-view push mower, drawn facing right, mirrored by direction */
+    function drawMower() {
+      ctx.save();
+      ctx.translate(mower.x, mower.ground);
+      ctx.scale(mower.dir * mower.scale, mower.scale);
+      ctx.beginPath(); ctx.ellipse(0, 1, 50, 5, 0, 0, 6.2832); ctx.fillStyle = "rgba(10,35,15,.28)"; ctx.fill();
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#1f2a22"; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.moveTo(-30, -28); ctx.lineTo(-72, -96); ctx.stroke();
+      ctx.lineWidth = 7; ctx.strokeStyle = "#121b15";
+      ctx.beginPath(); ctx.moveTo(-78, -94); ctx.lineTo(-66, -101); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(-46, -10); ctx.lineTo(-46, -26);
+      ctx.quadraticCurveTo(-46, -37, -35, -37); ctx.lineTo(24, -37);
+      ctx.quadraticCurveTo(42, -37, 47, -19); ctx.lineTo(47, -10); ctx.closePath();
+      ctx.fillStyle = "#f2b705"; ctx.fill();
+      ctx.fillStyle = "#c98f00"; ctx.fillRect(-46, -14, 93, 5);
+      ctx.fillStyle = "#173d2a"; roundRect(-18, -31, 40, 6, 2); ctx.fill();
+      ctx.fillStyle = "#26332a"; roundRect(-20, -58, 34, 23, 3); ctx.fill();
+      ctx.fillStyle = "#f2b705"; roundRect(-14, -64, 20, 7, 2); ctx.fill();
+      ctx.fillStyle = "#56645a"; ctx.fillRect(-16, -50, 26, 2.5); ctx.fillRect(-16, -44, 26, 2.5);
+      wheel(-31, -6, 11);
+      wheel(32, -6, 11);
+      ctx.restore();
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      if (!rows.length) { return; }
+      /* lawn ground with a gently rolling top edge */
+      var gTop = lawnTop + trackH;
+      ctx.beginPath();
+      ctx.moveTo(0, H);
+      for (var x = 0; x <= W + 20; x += 20) { ctx.lineTo(x, gTop + Math.sin(x * 0.004) * 6 + Math.sin(x * 0.011 + 1.3) * 3); }
+      ctx.lineTo(W, H);
+      ctx.closePath();
+      ctx.fillStyle = groundGrad;
+      ctx.fill();
+      drawRow(rows[0]);
+      drawRow(rows[1]);
+      for (var c = 0; c < clips.length; c++) {
+        var cl = clips[c];
+        ctx.save(); ctx.translate(cl.x, cl.y); ctx.rotate(cl.a);
+        ctx.fillStyle = cl.c; ctx.fillRect(-2.5, -0.9, 5, 1.8);
+        ctx.restore();
+      }
+      drawRow(rows[2]);
+      drawMower();
+    }
+    function frame(ts) {
+      raf = 0;
+      if (!live) { return; }
+      var dt = last ? Math.min(2, (ts - last) / 16.667) : 1;
+      last = ts;
+      time += dt / 60;
+      step(dt);
+      draw();
+      schedule();
+    }
+    function schedule() {
+      if (live && inView && !document.hidden && !raf) { raf = window.requestAnimationFrame(frame); }
+    }
+    function start() {
+      if (prefersReduced()) {
+        live = false;
+        if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
+        time = 0; pointer.power = 0; clips.length = 0;
+        stillScene();
+        draw();
+        return;
+      }
+      live = true;
+      last = 0;
+      lastInput = now() - 4000;
+      schedule();
+    }
+    function localPoint(e) {
+      var r = root.getBoundingClientRect();
+      return { x: e.clientX - r.left, y: e.clientY - r.top };
+    }
+    root.addEventListener("pointermove", function (e) {
+      if (!live || e.pointerType !== "mouse") { return; }
+      var p = localPoint(e);
+      pointer.x = p.x; pointer.y = p.y; pointer.power = 1; pointer.mouse = true;
+      if (p.y > lawnTop - 30) {
+        mower.target = Math.max(W * 0.04, Math.min(W * 0.96, p.x));
+        lastInput = now();
+        hideHint();
+      }
+    });
+    root.addEventListener("pointerleave", function () { pointer.mouse = false; });
+    root.addEventListener("pointerdown", function (e) {
+      if (!live) { return; }
+      if (e.target && e.target.closest && e.target.closest("a,button,input,select,textarea,label,form")) { return; }
+      var p = localPoint(e);
+      mower.target = Math.max(W * 0.04, Math.min(W * 0.96, p.x));
+      lastInput = now();
+      if (e.pointerType !== "mouse") { pointer.x = p.x; pointer.y = Math.max(p.y, lawnTop); pointer.power = 1; pointer.mouse = false; }
+      hideHint();
+    });
+    var pending = 0;
+    function queueResize() {
+      if (pending) { return; }
+      pending = window.requestAnimationFrame(function () { pending = 0; resize(); });
+    }
+    if ("ResizeObserver" in window) { new ResizeObserver(queueResize).observe(root); } else { window.addEventListener("resize", queueResize); }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (inView) { last = 0; lastScroll = window.pageYOffset || 0; schedule(); }
+      }).observe(root);
+    }
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) { last = 0; schedule(); } });
+    if (motionQuery) {
+      var onMotion = function () { resize(); start(); };
+      if (motionQuery.addEventListener) { motionQuery.addEventListener("change", onMotion); } else if (motionQuery.addListener) { motionQuery.addListener(onMotion); }
+    }
+    resize();
+    start();
+  }
+  function boot() {
+    var nodes = document.querySelectorAll(".glc-hero");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!nodes[i].getAttribute("data-glc-ready")) { nodes[i].setAttribute("data-glc-ready", "1"); initHero(nodes[i]); }
+    }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
+<!-- GLC HERO END -->
+<!-- GLC SEASON START -->
+<style>
+/* Greenline season: twelve months as mowed strips, one panel per month */
+.glc-season.glc-season:not(.glc--light){background:var(--glc-board-deep)}
+.glc-season .glc-season__strip{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px;margin:44px 0 0}
+.glc-season .glc-month{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:0;padding:0;border:0;background:none;color:var(--glc-chalk);font:inherit;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.glc-season .glc-month__lawn{position:relative;display:block;height:clamp(84px,11vw,132px);border-radius:2px;overflow:hidden;background:var(--glc-m-a,#4a9640);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);transition:transform 200ms var(--glc-ease),box-shadow 200ms ease}
+@media (hover:hover) and (pointer:fine){.glc-season .glc-month:hover .glc-month__lawn{transform:translateY(-4px)}}
+.glc-season .glc-month:active .glc-month__lawn{transform:scale(.96)}
+.glc-season .glc-month__lawn::after{content:"";position:absolute;inset:0;clip-path:inset(0 0 0 0);background:repeating-linear-gradient(90deg,transparent 0 var(--glc-sw,100%),var(--glc-m-b,#3f8a37) var(--glc-sw,100%) calc(var(--glc-sw,100%) * 2))}
+.glc-season .glc-month--dormant{--glc-m-a:#a7a067;--glc-m-b:#968f58}
+.glc-season .glc-month--wake{--glc-m-a:#7f9c4c;--glc-m-b:#718e43}
+.glc-season .glc-month__name{font-family:var(--glc-display);font-weight:700;font-size:clamp(14px,1.3vw,17px);line-height:1;letter-spacing:.04em;text-transform:uppercase}
+.glc-season .glc-month__cuts{font-size:12.5px;font-weight:500;line-height:1.2;color:var(--glc-chalk-2)}
+.glc-season .glc-month__now{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:1;padding:3px 6px;border-radius:2px;background:var(--glc-plate);color:var(--glc-yellow);font-family:var(--glc-display);font-weight:800;font-size:11px;line-height:1;letter-spacing:.12em}
+.glc-season .glc-month[aria-selected="true"] .glc-month__lawn{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 0 0 3px var(--glc-board-deep),0 0 0 6px var(--glc-yellow)}
+.glc-season .glc-month[aria-selected="true"] .glc-month__name{color:var(--glc-yellow)}
+.glc-season.glc--light .glc-month[aria-selected="true"] .glc-month__lawn{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 0 0 3px #eef0e6,0 0 0 6px #13231a}
+.glc-season.glc--light .glc-month[aria-selected="true"] .glc-month__name{color:#13231a;box-shadow:inset 0 -4px 0 var(--glc-yellow)}
+.glc-season.glc--light .glc-month:hover .glc-month__name{color:#13231a}
+.glc-season .glc-month:hover .glc-month__name{color:var(--glc-yellow-hi)}
+.glc-season .glc-month:focus-visible{outline:none}
+.glc-season .glc-month:focus-visible .glc-month__lawn{outline:3px solid var(--glc-chalk);outline-offset:9px}
+.glc-season .glc-season__panels{margin-top:32px}
+.glc-season .glc-season__panel{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:8px 40px;align-items:baseline;padding:24px 0 0;border-top:1px solid var(--glc-line)}
+.glc-season .glc-season__panel+.glc-season__panel{margin-top:20px}
+.glc-season.glc-season--js .glc-season__panel+.glc-season__panel{margin-top:0}
+.glc-season .glc-season__panel[hidden]{display:none}
+.glc-season .glc-season__panel h3{margin:0;font-family:var(--glc-display);font-weight:800;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.05;letter-spacing:-.02em;font-stretch:112%;text-transform:none;color:var(--glc-chalk)}
+.glc-season .glc-season__panel h3 small{display:block;margin-top:8px;font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:15px;letter-spacing:0;text-transform:none;color:var(--glc-yellow)}
+.glc-season.glc--light .glc-season__panel h3 small{color:#8f4527}
+.glc-season .glc-season__panel p{max-width:60ch;margin:0;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.6;color:var(--glc-chalk)}
+@container (max-width:760px){
+.glc-season .glc-season__strip{grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 8px}
+.glc-season .glc-month__lawn{height:72px}
+.glc-season .glc-season__panel{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){.glc-season.glc-season--js .glc-season__panel:not([hidden]){animation:glc-season-in 260ms var(--glc-ease) both}.glc-season.glc-season--js .glc-season__panel:not([hidden]) p{animation:glc-season-in 320ms var(--glc-ease) 40ms both}}
+@media (prefers-reduced-motion:reduce){.glc-season .glc-month__lawn{transition:none}}
+@media (prefers-reduced-motion:no-preference){.glc-season.glc-season--js .glc-month__lawn::after{clip-path:inset(0 100% 0 0);transition:clip-path 700ms var(--glc-ease-io);transition-delay:calc(var(--glc-m,0) * 70ms)}.glc-season.glc-season--js.is-in .glc-month__lawn::after{clip-path:inset(0 0 0 0)}.glc-season.glc-season--js.is-in .glc-month.is-mow .glc-month__lawn::after{animation:glc-mow 560ms var(--glc-ease-io) both}}
+@keyframes glc-mow{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes glc-season-in{from{opacity:0;transform:translateY(6px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+</style>
+<section class="glc glc-season glc--light glc--full glc-sec" id="glc-season" aria-labelledby="glc-season-h">
+<div class="glc-wrap">
+<h2 class="glc-h2" id="glc-season-h">Mowing season runs March to November.</h2>
+<p class="glc-lead">San Antonio grass grows nine months a year, so the schedule changes with it. Tap a month to see what happens on your lawn.</p>
+<div class="glc-season__strip" role="tablist" aria-label="Months of the year">
+<button class="glc-month glc-month--dormant" type="button" role="tab" id="glc-mt-1" aria-controls="glc-mp-1" data-month="1" style="--glc-sw:100%"><span class="glc-month__lawn"></span><span class="glc-month__name">Jan</span><span class="glc-month__cuts">1 visit</span></button>
+<button class="glc-month glc-month--dormant" type="button" role="tab" id="glc-mt-2" aria-controls="glc-mp-2" data-month="2" style="--glc-sw:100%"><span class="glc-month__lawn"></span><span class="glc-month__name">Feb</span><span class="glc-month__cuts">1 visit</span></button>
+<button class="glc-month glc-month--wake" type="button" role="tab" id="glc-mt-3" aria-controls="glc-mp-3" data-month="3" style="--glc-sw:25%"><span class="glc-month__lawn"></span><span class="glc-month__name">Mar</span><span class="glc-month__cuts">2 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-4" aria-controls="glc-mp-4" data-month="4" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">Apr</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-5" aria-controls="glc-mp-5" data-month="5" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">May</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-6" aria-controls="glc-mp-6" data-month="6" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">Jun</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-7" aria-controls="glc-mp-7" data-month="7" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">Jul</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-8" aria-controls="glc-mp-8" data-month="8" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">Aug</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-9" aria-controls="glc-mp-9" data-month="9" style="--glc-sw:12.5%"><span class="glc-month__lawn"></span><span class="glc-month__name">Sep</span><span class="glc-month__cuts">4 cuts</span></button>
+<button class="glc-month" type="button" role="tab" id="glc-mt-10" aria-controls="glc-mp-10" data-month="10" style="--glc-sw:16.666%"><span class="glc-month__lawn"></span><span class="glc-month__name">Oct</span><span class="glc-month__cuts">3 cuts</span></button>
+<button class="glc-month glc-month--wake" type="button" role="tab" id="glc-mt-11" aria-controls="glc-mp-11" data-month="11" style="--glc-sw:25%"><span class="glc-month__lawn"></span><span class="glc-month__name">Nov</span><span class="glc-month__cuts">2 cuts</span></button>
+<button class="glc-month glc-month--dormant" type="button" role="tab" id="glc-mt-12" aria-controls="glc-mp-12" data-month="12" style="--glc-sw:100%"><span class="glc-month__lawn"></span><span class="glc-month__name">Dec</span><span class="glc-month__cuts">1 visit</span></button>
+</div>
+<div class="glc-season__panels">
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-1" aria-labelledby="glc-mt-1" tabindex="0"><h3>January<small>Off season · 1 visit</small></h3><p>The lawn is dormant. One cleanup visit: leaves, fallen branches, beds raked out.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-2" aria-labelledby="glc-mt-2" tabindex="0"><h3>February<small>Off season · 1 visit</small></h3><p>Pre-emergent goes down in the second half of the month, before the soil warms and the spring weeds sprout. Ornamental grasses get cut back.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-3" aria-labelledby="glc-mt-3" tabindex="0"><h3>March<small>Every two weeks</small></h3><p>First cuts as the lawn greens up. Live oaks drop their old leaves now too, so March cleanups take a little longer.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-4" aria-labelledby="glc-mt-4" tabindex="0"><h3>April<small>Weekly</small></h3><p>Weekly mowing starts. The first feeding goes down once the lawn is fully green and has been cut twice.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-5" aria-labelledby="glc-mt-5" tabindex="0"><h3>May<small>Weekly</small></h3><p>Fastest growth of the spring. Edges on every visit, beds pulled back from the walk.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-6" aria-labelledby="glc-mt-6" tabindex="0"><h3>June<small>Weekly</small></h3><p>We raise the mower deck for the heat. Taller grass shades its own roots and holds water longer between your watering days.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-7" aria-labelledby="glc-mt-7" tabindex="0"><h3>July<small>Weekly</small></h3><p>Summer height, early starts. We check St.&nbsp;Augustine lawns for chinch bug patches and text you a photo if we find one.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-8" aria-labelledby="glc-mt-8" tabindex="0"><h3>August<small>Weekly</small></h3><p>The hardest month on a lawn. We don't cut a lawn short while it's stressed from the heat, even if the yard looks a bit shaggy for a few weeks.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-9" aria-labelledby="glc-mt-9" tabindex="0"><h3>September<small>Weekly</small></h3><p>Growth picks up again once the heat breaks. Fall feeding goes down late in the month.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-10" aria-labelledby="glc-mt-10" tabindex="0"><h3>October<small>Weekly, then every two weeks</small></h3><p>Growth slows. Fall pre-emergent for winter weeds. We drop to every two weeks when the lawn stops keeping up with a weekly cut.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-11" aria-labelledby="glc-mt-11" tabindex="0"><h3>November<small>Every two weeks</small></h3><p>Last regular cuts. Pecans and cedar elms start dropping, so leaves get mulched or hauled on every visit.</p></div>
+<div class="glc-season__panel" role="tabpanel" id="glc-mp-12" aria-labelledby="glc-mt-12" tabindex="0"><h3>December<small>Off season · 1 visit</small></h3><p>Final leaf haul of the year. The lawn goes dormant and visits drop to one a month until February.</p></div>
+</div>
+</div>
+</section>
+<script>
+/* Greenline season tabs. Without JS all twelve panels stay visible as a list. */
+(function () {
+  "use strict";
+  function initSeason(root) {
+    var tabs = root.querySelectorAll("[role='tab']");
+    var panels = root.querySelectorAll("[role='tabpanel']");
+    if (!tabs.length || !panels.length) { return; }
+    root.classList.add("glc-season--js");
+    var mq = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    for (var t = 0; t < tabs.length; t++) { tabs[t].style.setProperty("--glc-m", t); }
+    if ("IntersectionObserver" in window && !(mq && mq.matches)) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { root.classList.add("is-in"); io.disconnect(); }
+      }, { threshold: 0.3 });
+      io.observe(root.querySelector("[role='tablist']"));
+    } else { root.classList.add("is-in"); }
+    function mow(tab) {
+      if (!tab || (mq && mq.matches)) { return; }
+      tab.classList.remove("is-mow");
+      void tab.offsetWidth;
+      tab.classList.add("is-mow");
+    }
+    function select(n, focus) {
+      for (var i = 0; i < tabs.length; i++) {
+        var on = tabs[i].getAttribute("data-month") === String(n);
+        tabs[i].setAttribute("aria-selected", on ? "true" : "false");
+        tabs[i].setAttribute("tabindex", on ? "0" : "-1");
+        if (on && focus) { tabs[i].focus(); }
+      }
+      for (var j = 0; j < panels.length; j++) { panels[j].hidden = panels[j].id !== "glc-mp-" + n; }
+    }
+    var current = new Date().getMonth() + 1;
+    var nowTab = root.querySelector("[data-month='" + current + "'] .glc-month__lawn");
+    if (nowTab) {
+      var tag = document.createElement("span");
+      tag.className = "glc-month__now";
+      tag.textContent = "NOW";
+      nowTab.parentNode.insertBefore(tag, nowTab);
+    }
+    select(current, false);
+    root.addEventListener("click", function (e) {
+      var t = e.target.closest ? e.target.closest("[role='tab']") : null;
+      if (t && root.contains(t)) { select(t.getAttribute("data-month"), false); mow(t); }
+    });
+    root.addEventListener("keydown", function (e) {
+      var t = e.target;
+      if (!t || t.getAttribute("role") !== "tab") { return; }
+      var n = parseInt(t.getAttribute("data-month"), 10), next = 0;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") { next = n === 12 ? 1 : n + 1; }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { next = n === 1 ? 12 : n - 1; }
+      else if (e.key === "Home") { next = 1; }
+      else if (e.key === "End") { next = 12; }
+      if (next) { e.preventDefault(); select(next, true); }
+    });
+  }
+  function boot() {
+    var nodes = document.querySelectorAll(".glc-season");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!nodes[i].getAttribute("data-glc-ready")) { nodes[i].setAttribute("data-glc-ready", "1"); initSeason(nodes[i]); }
+    }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
+<!-- GLC SEASON END -->
+<!-- GLC VISIT START -->
+<style>
+/* Greenline visit: the order of a visit, printed like a lineup card */
+.glc-visit.glc-visit{background:var(--glc-board)}
+.glc-visit .glc-visit__grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,96px);align-items:start}
+.glc-visit .glc-visit__intro{position:sticky;top:32px}
+.glc-visit .glc-visit__crew{margin-top:28px;padding-top:20px;border-top:1px solid var(--glc-line);font-size:15.5px;color:var(--glc-chalk-2)}
+.glc-visit .glc-visit__crew strong{display:block;margin-bottom:4px;font-family:var(--glc-display);font-weight:700;font-size:19px;letter-spacing:-.01em;text-transform:none;color:var(--glc-chalk)}
+.glc-visit .glc-card{position:relative;padding:28px clamp(20px,3vw,36px) 18px;border-radius:2px;background:var(--glc-paper);color:var(--glc-ink);box-shadow:0 22px 44px rgba(4,18,10,.42),0 2px 4px rgba(4,18,10,.3)}
+.glc-visit .glc-card__head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:3px solid var(--glc-ink)}
+.glc-visit .glc-card__head h3{margin:0;font-family:var(--glc-display);font-weight:800;font-size:clamp(1.5rem,2.4vw,1.9rem);line-height:1.05;letter-spacing:-.02em;font-stretch:112%;text-transform:none;color:var(--glc-ink)}
+.glc-visit .glc-card__head span{font-size:14px;font-weight:600;color:var(--glc-ink-2);white-space:nowrap}
+.glc-visit .glc-card ol{margin:0;padding:0;list-style:none;counter-reset:glc-bat}
+.glc-visit .glc-card li{display:grid;grid-template-columns:2.6rem minmax(0,6.2rem) minmax(0,1fr);gap:4px 18px;align-items:center;margin:0;padding:15px 0;border-bottom:1px solid rgba(19,35,26,.16);counter-increment:glc-bat}
+.glc-visit .glc-card li:last-child{border-bottom:0}
+.glc-visit .glc-card li::before{content:counter(glc-bat);font-family:var(--glc-display);font-weight:800;font-size:32px;line-height:1;color:var(--glc-ink)}
+.glc-visit .glc-card li b{font-family:var(--glc-display);font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em;text-transform:none}
+.glc-visit .glc-card li span{font-size:15.5px;line-height:1.5;color:var(--glc-ink-2)}
+@media (prefers-reduced-motion:no-preference){.glc-visit.glc-visit--js .glc-card li{opacity:0;transform:translateY(12px);filter:blur(4px);transition:opacity 420ms var(--glc-ease),transform 420ms var(--glc-ease),filter 420ms var(--glc-ease);transition-delay:calc(var(--glc-i,0) * 60ms)}.glc-visit.glc-visit--js .glc-card.is-in li{opacity:1;transform:none;filter:blur(0)}}
+@container (max-width:900px){.glc-visit .glc-visit__grid{grid-template-columns:1fr}.glc-visit .glc-visit__intro{position:static}}
+@container (max-width:560px){.glc-visit .glc-card li{grid-template-columns:2.4rem minmax(0,1fr)}.glc-visit .glc-card li{align-items:start}.glc-visit .glc-card li::before{font-size:28px;line-height:.95;grid-row:span 2}.glc-visit .glc-card__head{flex-direction:column;gap:6px}}
+</style>
+<section class="glc glc-visit glc--full glc-sec" id="glc-visit" aria-labelledby="glc-visit-h">
+<div class="glc-wrap glc-visit__grid">
+<div class="glc-visit__intro">
+<h2 class="glc-h2" id="glc-visit-h">Every visit runs in the same order.</h2>
+<p class="glc-lead">Same crew every week, same steps every time. A medium yard takes about forty minutes from the gate to the photo.</p>
+<p class="glc-visit__crew"><strong>Two people, one truck</strong>Your crew lead is the person you text. If the regular crew is out, you hear about it the day before.</p>
+</div>
+<div class="glc-card">
+<div class="glc-card__head"><h3>The visit</h3><span>Medium yard · about 40 min</span></div>
+<ol>
+<li><b>Heads&nbsp;up</b><span>A text when we're 30 minutes out, so the dog can go inside and the gate can be unlocked.</span></li>
+<li><b>Mow</b><span>St.&nbsp;Augustine at 3.5 to 4 inches, Bermuda lower. The direction changes each week so the grass stands up straight.</span></li>
+<li><b>Edge</b><span>Driveway, walks and curb get a clean vertical edge.</span></li>
+<li><b>Trim</b><span>Fence lines, tree trunks, the mailbox post and around the AC unit.</span></li>
+<li><b>Blow off</b><span>Clippings go back onto the lawn, not into the street or the storm drain.</span></li>
+<li><b>Photo</b><span>A picture of the finished yard lands in your texts before the truck leaves.</span></li>
+</ol>
+</div>
+</div>
+</section>
+<script>
+/* Greenline visit card: rows settle in one after another the first time the card scrolls into view. */
+(function () {
+  "use strict";
+  function initVisit(root) {
+    var card = root.querySelector(".glc-card");
+    if (!card || !("IntersectionObserver" in window)) { return; }
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+    var rows = card.querySelectorAll("li");
+    for (var i = 0; i < rows.length; i++) { rows[i].style.setProperty("--glc-i", i); }
+    root.classList.add("glc-visit--js");
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { card.classList.add("is-in"); io.disconnect(); }
+    }, { threshold: 0.2 });
+    io.observe(card);
+  }
+  function boot() {
+    var nodes = document.querySelectorAll(".glc-visit");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!nodes[i].getAttribute("data-glc-ready")) { nodes[i].setAttribute("data-glc-ready", "1"); initVisit(nodes[i]); }
+    }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
+<!-- GLC VISIT END -->
+<!-- GLC ROUTE START -->
+<style>
+/* Greenline route: crew day by neighborhood, set like an out-of-town scoreboard */
+.glc-route.glc-route:not(.glc--light){background:var(--glc-board-deep)}
+.glc-route .glc-route__top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:28px 56px;align-items:end;margin-bottom:40px}
+.glc-route .glc-route__find{display:grid;gap:8px}
+.glc-route .glc-route__find label{font-weight:600;font-size:15px;color:var(--glc-chalk)}
+.glc-route .glc-route__field{display:flex;gap:8px}
+.glc-route .glc-route__field input{flex:1;min-width:0;height:54px;padding:0 16px;border:2px solid var(--glc-plate);border-radius:2px;background:var(--glc-plate);color:#f7f7ef;font:700 22px/1 var(--glc-display);letter-spacing:.12em;caret-color:var(--glc-yellow)}
+.glc-route .glc-route__field input::placeholder{color:#8fa190;letter-spacing:.14em}
+.glc-route .glc-route__field input:focus{border-color:var(--glc-yellow);outline:none;box-shadow:0 0 0 3px rgba(242,183,5,.45)}
+.glc-route .glc-route__msg{min-height:1.5em;font-size:15px;color:var(--glc-chalk-2)}
+.glc-route .glc-route__msg b{color:var(--glc-yellow)}
+.glc-route.glc--light .glc-route__msg b{color:#13231a}
+.glc-route .glc-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin:0;padding:0;list-style:none;border-top:2px solid var(--glc-line)}
+.glc-route .glc-day{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;align-content:center;gap:2px 18px;align-items:center;margin:0;padding:16px 16px;border-bottom:1px solid var(--glc-line);transition:background-color .3s ease}
+.glc-route .glc-day .glc-plate{grid-row:span 2;width:74px;height:58px;background:var(--glc-plate);transition:background-color 200ms ease,color 200ms ease,transform 260ms var(--glc-ease);font-size:21px;letter-spacing:.04em}
+.glc-route .glc-day b{align-self:end;font-weight:700;font-size:18px;line-height:1.3;color:var(--glc-chalk)}
+.glc-route .glc-day>span:not(.glc-plate){align-self:start;font-size:14.5px;line-height:1.4;color:var(--glc-chalk-2);font-variant-numeric:tabular-nums}
+.glc-route .glc-day.is-match .glc-plate{background:var(--glc-yellow);color:var(--glc-ink);transform:scale(1.06)}
+.glc-route .glc-day.is-match b{color:var(--glc-yellow)}
+.glc-route.glc--light .glc-day.is-match b{color:#13231a}
+.glc-route.glc--light .glc-day.is-match{background:rgba(242,183,5,.18)}
+@container (max-width:820px){.glc-route .glc-route__top{grid-template-columns:1fr}.glc-route .glc-days{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.glc-route .glc-day{transition:none}}
+</style>
+<section class="glc glc-route glc--light glc--full glc-sec" id="glc-route" aria-labelledby="glc-route-h">
+<div class="glc-wrap">
+<div class="glc-route__top">
+<div>
+<h2 class="glc-h2" id="glc-route-h">Your street gets the same day every week.</h2>
+<p class="glc-lead">One part of town per day, so the truck spends its time on lawns instead of Loop&nbsp;410.</p>
+</div>
+<form class="glc-route__find" novalidate>
+<label for="glc-route-zip">Find your day by ZIP</label>
+<div class="glc-route__field"><input id="glc-route-zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="78209" aria-describedby="glc-route-msg"></div>
+<p class="glc-route__msg" id="glc-route-msg" aria-live="polite">Five digits, no need to press enter.</p>
+</form>
+</div>
+<ul class="glc-days">
+<li class="glc-day" data-zips="78212 78215"><span class="glc-plate" aria-hidden="true">MON</span><b><span class="glc-sr">Monday: </span>Monte Vista, Olmos Park, Tobin Hill</b><span>78212, 78215</span></li>
+<li class="glc-day" data-zips="78209 78218"><span class="glc-plate" aria-hidden="true">TUE</span><b><span class="glc-sr">Tuesday: </span>Alamo Heights, Terrell Hills</b><span>78209, 78218</span></li>
+<li class="glc-day" data-zips="78258 78259 78260"><span class="glc-plate" aria-hidden="true">WED</span><b><span class="glc-sr">Wednesday: </span>Stone Oak, Encino Park</b><span>78258, 78259, 78260</span></li>
+<li class="glc-day" data-zips="78213 78231 78238"><span class="glc-plate" aria-hidden="true">THU</span><b><span class="glc-sr">Thursday: </span>Castle Hills, Shavano Park, Leon Valley</b><span>78213, 78231, 78238</span></li>
+<li class="glc-day" data-zips="78204 78210"><span class="glc-plate" aria-hidden="true">FRI</span><b><span class="glc-sr">Friday: </span>King William, Southtown, Lavaca</b><span>78204, 78210</span></li>
+<li class="glc-day" data-zips=""><span class="glc-plate" aria-hidden="true">SAT</span><b><span class="glc-sr">Saturday: </span>Rain makeups only</b><span>When the week loses a day to weather</span></li>
+</ul>
+</div>
+</section>
+<script>
+/* Greenline route finder: highlights the crew day for a ZIP. */
+(function () {
+  "use strict";
+  var DAY = { MON: "Monday", TUE: "Tuesday", WED: "Wednesday", THU: "Thursday", FRI: "Friday" };
+  function initRoute(root) {
+    var input = root.querySelector("#glc-route-zip") || root.querySelector("input");
+    var msg = root.querySelector(".glc-route__msg");
+    var form = root.querySelector(".glc-route__find");
+    var days = root.querySelectorAll(".glc-day");
+    if (!input || !msg || !days.length) { return; }
+    var idle = msg.textContent;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var ABC = "ABCDEFGHIJKLMNOPRSTUVWXYZ";
+    function flap(el, word) {
+      if (!el || reduce || !el.animate) { return; }
+      var k = 0;
+      function tick() {
+        var last = k === 5, out = "";
+        for (var i = 0; i < word.length; i++) { out += last ? word.charAt(i) : ABC.charAt((Math.random() * ABC.length) | 0); }
+        el.textContent = out;
+        el.animate([{ transform: "scale(1.06) perspective(200px) rotateX(-70deg)" }, { transform: "scale(1.06) perspective(200px) rotateX(0deg)" }], { duration: last ? 220 : 60, easing: "cubic-bezier(.23,1,.32,1)" });
+        k++;
+        if (!last) { window.setTimeout(tick, 60); }
+      }
+      tick();
+    }
+    function check() {
+      var zip = input.value.replace(/\D/g, "").slice(0, 5);
+      if (input.value !== zip) { input.value = zip; }
+      var hit = null, was = root.querySelector(".glc-day.is-match");
+      for (var i = 0; i < days.length; i++) {
+        var list = (days[i].getAttribute("data-zips") || "").split(" ");
+        var on = zip.length === 5 && list.indexOf(zip) > -1;
+        days[i].classList.toggle("is-match", on);
+        if (on) { hit = days[i]; }
+      }
+      if (zip.length < 5) { msg.textContent = idle; return; }
+      if (hit) {
+        var code = hit.querySelector(".glc-plate").textContent;
+        msg.innerHTML = "";
+        var b = document.createElement("b");
+        b.textContent = DAY[code] || code;
+        if (hit !== was) { flap(hit.querySelector(".glc-plate"), code); }
+        msg.appendChild(b);
+        msg.appendChild(document.createTextNode(" is your crew day."));
+      } else {
+        msg.textContent = "That ZIP isn't on a route yet. Call us and we'll tell you if it's close enough.";
+      }
+    }
+    input.addEventListener("input", check);
+    if (form) { form.addEventListener("submit", function (e) { e.preventDefault(); check(); }); }
+  }
+  function boot() {
+    var nodes = document.querySelectorAll(".glc-route");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!nodes[i].getAttribute("data-glc-ready")) { nodes[i].setAttribute("data-glc-ready", "1"); initRoute(nodes[i]); }
+    }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
+<!-- GLC ROUTE END -->
+<!-- GLC BOOK START -->
+<style>
+/* Greenline booking: a ticket with a stub that carries the estimate */
+.glc-book.glc-book{background:var(--glc-clay)}
+.glc-book .glc-book__head{max-width:40rem;margin-bottom:40px}
+.glc-book .glc-book__head .glc-lead{color:#f1dccf}
+.glc-book .glc-book__head a{font-weight:700;color:var(--glc-chalk);text-underline-offset:4px;text-decoration-thickness:2px;text-decoration-color:var(--glc-yellow)}
+.glc-book .glc-bit{position:absolute;z-index:3;width:10px;height:4px;border-radius:1px;pointer-events:none}
+.glc-book .glc-ticket{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,19rem);color:var(--glc-ink);filter:drop-shadow(0 18px 26px rgba(0,0,0,.28))}
+.glc-book .glc-ticket__main{padding:clamp(22px,3.4vw,40px);background:radial-gradient(circle 12px at 100% 0,transparent 11.5px,var(--glc-paper) 12px) top / 100% 51% no-repeat,radial-gradient(circle 12px at 100% 100%,transparent 11.5px,var(--glc-paper) 12px) bottom / 100% 51% no-repeat}
+.glc-book .glc-ticket__stub{position:relative;display:flex;flex-direction:column;gap:18px;padding:clamp(22px,3vw,34px);background:radial-gradient(circle 12px at 0 0,transparent 11.5px,#e6e8dc 12px) top / 100% 51% no-repeat,radial-gradient(circle 12px at 0 100%,transparent 11.5px,#e6e8dc 12px) bottom / 100% 51% no-repeat}
+.glc-book .glc-ticket__stub::before{content:"";position:absolute;left:-1px;top:16px;bottom:16px;border-left:2px dashed rgba(19,35,26,.35)}
+.glc-book .glc-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 20px;margin:0;padding:0;border:0}
+.glc-book .glc-f{display:grid;gap:7px;align-content:start;min-width:0}
+.glc-book .glc-f--wide{grid-column:1 / -1}
+.glc-book .glc-f label,.glc-book .glc-f .glc-f__label{font-weight:600;font-size:15px;line-height:1.3;color:var(--glc-ink)}
+.glc-book .glc-f label small{font-weight:500;color:var(--glc-ink-2)}
+.glc-book .glc-f input,.glc-book .glc-f select,.glc-book .glc-f textarea{width:100%;min-height:50px;margin:0;padding:12px 14px;border:2px solid #9aa69a;border-radius:2px;background:#fff;color:var(--glc-ink);font:500 16px/1.3 "Barlow",system-ui,sans-serif;box-shadow:none;-webkit-appearance:none;appearance:none}
+.glc-book .glc-f select{padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2313231a' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px 8px}
+.glc-book .glc-f textarea{min-height:88px;resize:vertical}
+.glc-book .glc-f input:focus,.glc-book .glc-f select:focus,.glc-book .glc-f textarea:focus{border-color:var(--glc-ink);outline:3px solid var(--glc-yellow);outline-offset:1px}
+.glc-book .glc-f input::placeholder,.glc-book .glc-f textarea::placeholder{color:#66736a}
+.glc-book .glc-f [aria-invalid="true"]{border-color:#b3261e}
+.glc-book .glc-f__err{margin:0;font-size:14px;font-weight:600;color:#a3221b}
+.glc-book .glc-f__err:empty{display:none}
+.glc-book .glc-checks{display:flex;flex-wrap:wrap;gap:10px}
+.glc-book .glc-check{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 16px;border:2px solid #9aa69a;border-radius:2px;background:#fff;font-weight:600;font-size:15.5px;cursor:pointer}
+.glc-book .glc-f .glc-check input{flex:none;width:20px;height:20px;min-height:0;margin:0;padding:0;border:0;background:none;-webkit-appearance:checkbox;appearance:auto;accent-color:var(--glc-ink)}
+.glc-book .glc-check:has(input:checked){border-color:var(--glc-ink);background:#fff8dc}
+.glc-book .glc-ticket__go{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.glc-book .glc-ticket__go p{font-size:14.5px;color:var(--glc-ink-2)}
+.glc-book .glc-ticket__go a{color:var(--glc-ink);font-weight:700;text-underline-offset:3px}
+.glc-book .glc-stub__admit{font-family:var(--glc-display);font-weight:800;font-size:26px;line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.glc-book .glc-stub__admit small{display:block;margin-top:8px;line-height:1.3;font-family:"Barlow",system-ui,sans-serif;font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:none;color:var(--glc-ink-2)}
+.glc-book .glc-stub__price{display:flex;align-items:baseline;gap:6px;font-family:var(--glc-display);font-weight:800;line-height:1}
+.glc-book .glc-stub__price b{font-size:50px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.glc-book .glc-stub__price span{font-size:16px;letter-spacing:.04em;text-transform:uppercase}
+.glc-book .glc-stub__rows{display:grid;gap:8px;margin:0;font-size:15px}
+.glc-book .glc-stub__rows div{display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid rgba(19,35,26,.18)}
+.glc-book .glc-stub__rows dt{color:var(--glc-ink-2)}
+.glc-book .glc-stub__rows dd{margin:0;font-weight:700;text-align:right}
+.glc-book .glc-ticket__stub{transition:transform 520ms var(--glc-ease-drawer)}
+@media (prefers-reduced-motion:no-preference){.glc-book .glc-ticket.is-booked .glc-done{animation:glc-done-in 420ms var(--glc-ease) 120ms both}}
+@keyframes glc-done-in{from{opacity:0;transform:translateY(10px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+.glc-book .glc-btn[disabled]{filter:blur(.4px)}
+.glc-book .glc-ticket.is-booked .glc-ticket__stub{transform:translate(18px,6px) rotate(2.2deg)}
+.glc-book .glc-done{display:none;padding:8px 0}
+.glc-book .glc-done h3{margin:0 0 10px;font-family:var(--glc-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.05;letter-spacing:-.02em;font-stretch:112%;text-transform:none;color:var(--glc-ink)}
+.glc-book .glc-done p{max-width:46ch;font-size:17px;line-height:1.55;color:var(--glc-ink-2)}
+.glc-book .glc-ticket.is-booked .glc-done{display:block}
+.glc-book .glc-ticket.is-booked .glc-ticket__main{display:flex;align-items:center}
+.glc-book .glc-ticket.is-booked .glc-form{display:none}
+.glc-book .glc-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 32px;margin:44px 0 0}
+.glc-book .glc-rules dt{margin-bottom:6px;font-family:var(--glc-display);font-weight:700;font-size:18px;line-height:1.2;letter-spacing:-.01em;text-transform:none;color:var(--glc-chalk)}
+.glc-book .glc-rules dd{margin:0;font-size:15px;line-height:1.5;color:#f1dccf}
+@media (prefers-reduced-motion:reduce){.glc-book .glc-ticket__stub{transition:none}}
+@container (max-width:900px){.glc-book .glc-ticket{grid-template-columns:1fr}.glc-book .glc-ticket__stub{order:-1;background:radial-gradient(circle 12px at 0 100%,transparent 11.5px,#e6e8dc 12px) left / 51% 100% no-repeat,radial-gradient(circle 12px at 100% 100%,transparent 11.5px,#e6e8dc 12px) right / 51% 100% no-repeat}.glc-book .glc-ticket__stub::before{top:auto;left:16px;right:16px;bottom:-1px;border-left:0;border-bottom:2px dashed rgba(19,35,26,.35)}.glc-book .glc-ticket__main{background:radial-gradient(circle 12px at 0 0,transparent 11.5px,var(--glc-paper) 12px) left / 51% 100% no-repeat,radial-gradient(circle 12px at 100% 0,transparent 11.5px,var(--glc-paper) 12px) right / 51% 100% no-repeat}.glc-book .glc-ticket.is-booked .glc-ticket__stub{transform:translate(4px,-14px) rotate(-1.6deg)}.glc-book .glc-rules{grid-template-columns:1fr 1fr}}
+@container (max-width:560px){.glc-book .glc-fields{grid-template-columns:1fr}.glc-book .glc-rules{grid-template-columns:1fr}.glc-book .glc-ticket__go .glc-btn{width:100%}}
+</style>
+<section class="glc glc-book glc--full glc-sec" id="glc-book" aria-labelledby="glc-book-h">
+<div class="glc-wrap">
+<div class="glc-book__head">
+<h2 class="glc-h2" id="glc-book-h">Book your first cut.</h2>
+<p class="glc-lead">Send the ticket and we'll call within one business day to set your crew day and walk the yard. Rather talk now? <a href="tel:+12105550136">Call (210) 555-0136</a>.</p>
+</div>
+<div class="glc-ticket">
+<div class="glc-ticket__main">
+<form class="glc-form" novalidate>
+<fieldset class="glc-fields">
+<legend class="glc-sr">Your details</legend>
+<div class="glc-f"><label for="glc-b-name">Name</label><input id="glc-b-name" name="name" type="text" autocomplete="name" required aria-describedby="glc-b-name-e"><p class="glc-f__err" id="glc-b-name-e"></p></div>
+<div class="glc-f"><label for="glc-b-phone">Mobile number</label><input id="glc-b-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(210) 555-0123" required aria-describedby="glc-b-phone-e"><p class="glc-f__err" id="glc-b-phone-e"></p></div>
+<div class="glc-f"><label for="glc-b-street">Street address</label><input id="glc-b-street" name="street" type="text" autocomplete="street-address" required aria-describedby="glc-b-street-e"><p class="glc-f__err" id="glc-b-street-e"></p></div>
+<div class="glc-f"><label for="glc-b-zip">ZIP</label><input id="glc-b-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" required aria-describedby="glc-b-zip-e"><p class="glc-f__err" id="glc-b-zip-e"></p></div>
+<div class="glc-f"><label for="glc-b-lot">Yard size</label><select id="glc-b-lot" name="lot"><option value="s">Small, under 5,000 sq ft</option><option value="m" selected>Medium, 5,000 to 10,000 sq ft</option><option value="l">Large, 10,000 to 20,000 sq ft</option><option value="xl">Extra large, over 20,000 sq ft</option></select></div>
+<div class="glc-f"><label for="glc-b-often">How often</label><select id="glc-b-often" name="often"><option value="weekly" selected>Weekly</option><option value="biweekly">Every two weeks</option></select></div>
+<div class="glc-f glc-f--wide" role="group" aria-labelledby="glc-b-extras-l"><span class="glc-f__label" id="glc-b-extras-l">Extras</span><div class="glc-checks"><label class="glc-check"><input type="checkbox" name="extra" value="beds">Shrub and bed trim, +$15</label><label class="glc-check"><input type="checkbox" name="extra" value="bag">Bag the clippings, +$8</label></div></div>
+<div class="glc-f glc-f--wide"><label for="glc-b-notes">Gate code, dogs, anything we should know <small>(optional)</small></label><textarea id="glc-b-notes" name="notes" rows="3"></textarea></div>
+</fieldset>
+<div class="glc-ticket__go"><button class="glc-btn glc-btn--go" type="submit">Book a first cut</button><p>No contract. No card needed to book.</p></div>
+</form>
+<div class="glc-done" role="status" tabindex="-1"><h3>You're on the list.</h3><p data-glc-done>We'll call within one business day to set your crew day.</p></div>
+</div>
+<aside class="glc-ticket__stub" aria-label="Your estimate">
+<p class="glc-stub__admit">Admit one<small data-glc-stub-sub>First cut</small></p>
+<p class="glc-stub__price" data-glc-stub-price><b>$60</b><span>a visit</span></p>
+<dl class="glc-stub__rows">
+<div><dt>Yard</dt><dd data-glc-stub-lot>Medium</dd></div>
+<div><dt>How often</dt><dd data-glc-stub-often>Weekly</dd></div>
+<div><dt>Per month</dt><dd data-glc-stub-month>about $260</dd></div>
+</dl>
+</aside>
+</div>
+<dl class="glc-rules">
+<div><dt>Rain delay</dt><dd>If it pours on your day, we come the next dry one, usually within 48 hours.</dd></div>
+<div><dt>Skip a week</dt><dd>Text your crew lead by the night before. No fee.</dd></div>
+<div><dt>Paying</dt><dd>Card on file after the first visit, charged when each cut is done.</dd></div>
+<div><dt>The price</dt><dd>The board is an estimate. We confirm it on the first visit, before we start.</dd></div>
+</dl>
+</div>
+</section>
+<script>
+/* Greenline booking ticket: live stub, validation, front-end success state.
+   Listens for the hero board's "glc:estimate" event; works alone without it. */
+(function () {
+  "use strict";
+  var PRICE = { s: 45, m: 60, l: 85 };
+  var EXTRA = { beds: 15, bag: 8 };
+  var LOT = { s: "Small", m: "Medium", l: "Large", xl: "Extra large" };
+  function initBook(root) {
+    var ticket = root.querySelector(".glc-ticket");
+    var form = root.querySelector(".glc-form");
+    if (!ticket || !form) { return; }
+    var lotSel = form.querySelector("[name='lot']"), oftenSel = form.querySelector("[name='often']");
+    var boxes = form.querySelectorAll("[name='extra']");
+    var stubPrice = root.querySelector("[data-glc-stub-price]");
+    function q(sel) { return root.querySelector(sel); }
+    function current() {
+      var extras = [];
+      for (var i = 0; i < boxes.length; i++) { if (boxes[i].checked) { extras.push(boxes[i].value); } }
+      return { lot: lotSel.value, often: oftenSel.value, extras: extras };
+    }
+    var lastPrice = "", reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var GRASS = ["#4f923a", "#6fa34a", "#8bbd5c", "#3a7c29", "#f2b705"];
+    /* grass clippings fly off the perforation when the stub tears */
+    function burst() {
+      if (reduce || !document.body.animate) { return; }
+      var stub = root.querySelector(".glc-ticket__stub"), tr = ticket.getBoundingClientRect(), sr = stub.getBoundingClientRect();
+      var vertical = sr.left - tr.left > 40;
+      for (var i = 0; i < 34; i++) {
+        var bit = document.createElement("span");
+        bit.className = "glc-bit";
+        bit.style.background = GRASS[i % GRASS.length];
+        var x = vertical ? sr.left - tr.left : 20 + Math.random() * (tr.width - 40);
+        var y = vertical ? 20 + Math.random() * (sr.height - 40) : sr.bottom - tr.top;
+        bit.style.left = x + "px";
+        bit.style.top = y + "px";
+        ticket.appendChild(bit);
+        var dx = (Math.random() - 0.5) * 160 + (vertical ? 40 : 0), dy = -60 - Math.random() * 90, rot = (Math.random() - 0.5) * 720;
+        var an = bit.animate([
+          { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+          { transform: "translate(" + dx * 0.7 + "px," + dy + "px) rotate(" + rot * 0.6 + "deg)", opacity: 1, offset: 0.45 },
+          { transform: "translate(" + dx + "px," + (dy + 160) + "px) rotate(" + rot + "deg)", opacity: 0 }
+        ], { duration: 900 + Math.random() * 500, easing: "cubic-bezier(.2,.7,.4,1)", delay: Math.random() * 120 });
+        an.onfinish = (function (el) { return function () { if (el.parentNode) { el.parentNode.removeChild(el); } }; })(bit);
+      }
+    }
+    function render() {
+      var s = current(), v = PRICE[s.lot];
+      q("[data-glc-stub-lot]").textContent = LOT[s.lot];
+      q("[data-glc-stub-often]").textContent = s.often === "biweekly" ? "Every 2 weeks" : "Weekly";
+      if (!v) {
+        stubPrice.innerHTML = "<b>On site</b>";
+        q("[data-glc-stub-month]").textContent = "priced at the walk";
+        return;
+      }
+      v += s.often === "biweekly" ? 10 : 0;
+      for (var i = 0; i < s.extras.length; i++) { v += EXTRA[s.extras[i]] || 0; }
+      var m = Math.round((v * (s.often === "biweekly" ? 26 : 52) / 12) / 5) * 5;
+      stubPrice.innerHTML = "";
+      var b = document.createElement("b"); b.textContent = "$" + v;
+      var sp = document.createElement("span"); sp.textContent = "a visit";
+      stubPrice.appendChild(b); stubPrice.appendChild(sp);
+      if (lastPrice && lastPrice !== b.textContent && b.animate && !reduce) {
+        b.animate([{ opacity: 0.2, transform: "translateY(10px)", filter: "blur(6px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }], { duration: 280, easing: "cubic-bezier(.23,1,.32,1)" });
+      }
+      lastPrice = b.textContent;
+      q("[data-glc-stub-month]").textContent = "about $" + m;
+    }
+    function apply(e) {
+      if (!e || ticket.classList.contains("is-booked")) { return; }
+      if (e.lot) { lotSel.value = e.lot; }
+      if (e.often) { oftenSel.value = e.often; }
+      if (e.extras) { for (var i = 0; i < boxes.length; i++) { boxes[i].checked = e.extras.indexOf(boxes[i].value) > -1; } }
+      render();
+    }
+    form.addEventListener("change", render);
+    document.addEventListener("glc:estimate", function (ev) { apply(ev.detail); });
+    var hero = document.querySelector("[data-glc-estimate]");
+    if (hero) { try { apply(JSON.parse(hero.getAttribute("data-glc-estimate"))); } catch (err) { render(); } } else { render(); }
+    /* validation */
+    var rules = {
+      name: function (v) { return v.trim().length > 1 ? "" : "Tell us who to ask for."; },
+      phone: function (v) { var d = v.replace(/\D/g, ""); if (d.length === 11 && d.charAt(0) === "1") { d = d.slice(1); } return d.length === 10 ? "" : "We need a 10-digit number to call you back."; },
+      street: function (v) { return v.trim().length > 4 ? "" : "Add the street address so we can find the yard."; },
+      zip: function (v) { return /^\d{5}$/.test(v.trim()) ? "" : "Five digits, like 78209."; }
+    };
+    function checkField(name) {
+      var el = form.querySelector("[name='" + name + "']"), err = q("#" + el.id + "-e");
+      var msg = rules[name](el.value);
+      el.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (err) { err.textContent = msg; }
+      return msg ? el : null;
+    }
+    Object.keys(rules).forEach(function (name) {
+      var el = form.querySelector("[name='" + name + "']");
+      el.addEventListener("blur", function () { if (el.value) { checkField(name); } });
+      el.addEventListener("input", function () { if (el.getAttribute("aria-invalid") === "true") { checkField(name); } });
+    });
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var first = null;
+      Object.keys(rules).forEach(function (name) { var bad = checkField(name); if (bad && !first) { first = bad; } });
+      if (first) { first.focus(); return; }
+      var btn = form.querySelector("[type='submit']"), label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+      /* Front-end stub. Replace with a real submit (Contact Form 7, Gravity Forms, a webhook) in production. */
+      window.setTimeout(function () {
+        btn.disabled = false;
+        btn.textContent = label;
+        var first = form.querySelector("[name='name']").value.trim().split(" ")[0];
+        var d = form.querySelector("[name='phone']").value.replace(/\D/g, "");
+        if (d.length === 11) { d = d.slice(1); }
+        var phone = "(" + d.slice(0, 3) + ") " + d.slice(3, 6) + "-" + d.slice(6);
+        var sub = q("[data-glc-stub-sub]");
+        if (sub) { sub.textContent = "First cut, booked. Keep this stub."; }
+        q("[data-glc-done]").textContent = "Thanks, " + first + ". We'll call " + phone + " within one business day to set your crew day and walk the yard.";
+        ticket.classList.add("is-booked");
+        burst();
+        var done = q(".glc-done");
+        if (done) { done.focus(); }
+      }, 900);
+    });
+  }
+  function boot() {
+    var nodes = document.querySelectorAll(".glc-book");
+    for (var i = 0; i < nodes.length; i++) {
+      if (!nodes[i].getAttribute("data-glc-ready")) { nodes[i].setAttribute("data-glc-ready", "1"); initBook(nodes[i]); }
+    }
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
+<!-- GLC BOOK END -->
+<!-- GLC FOOTER START -->
+<style>
+/* Greenline footer: two rows on one left edge. Row 1: logo and the phone. Row 2: legal line and page links. */
+.glc-foot.glc-foot{background:var(--glc-board-deep);border-top:5px solid var(--glc-yellow)}
+.glc-foot .glc-foot__top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 48px;padding-top:56px;padding-bottom:36px}
+.glc-foot .glc-foot__brand{display:block;margin:0;font-size:44px;line-height:1;color:var(--glc-chalk);text-decoration:none;border:0;box-shadow:none}
+.glc-foot .glc-foot__brand .glc-logo{font-size:inherit}
+.glc-foot .glc-foot__contact{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.glc-foot .glc-foot__call{font-family:var(--glc-display);font-weight:800;font-stretch:112%;font-size:28px;line-height:1;letter-spacing:-.01em;color:var(--glc-chalk);text-decoration:none;border:0;box-shadow:none}
+.glc-foot .glc-foot__call:hover{color:var(--glc-yellow)}
+.glc-foot .glc-foot__hours{margin:0;font-size:15px;line-height:1.4;color:var(--glc-chalk-2)}
+.glc-foot .glc-foot__bottom{display:flex;align-items:center;justify-content:space-between;gap:12px 32px;padding-top:20px;padding-bottom:24px;border-top:1px solid var(--glc-line)}
+.glc-foot .glc-foot__legal{margin:0;font-size:14px;line-height:1.5;color:var(--glc-chalk-2)}
+.glc-foot .glc-foot__nav{display:flex;flex-wrap:wrap;gap:8px 28px;margin:0;padding:0;list-style:none}
+.glc-foot .glc-foot__nav li{margin:0;padding:0}
+.glc-foot .glc-foot__nav a{font-size:14px;font-weight:600;line-height:1.5;color:var(--glc-chalk);text-decoration:none;border:0;box-shadow:none}
+.glc-foot .glc-foot__nav a:hover{color:var(--glc-yellow)}
+@container (max-width:760px){.glc-foot .glc-foot__top{flex-direction:column;align-items:flex-start;padding-top:44px;padding-bottom:28px}.glc-foot .glc-foot__brand{font-size:36px}.glc-foot .glc-foot__contact{align-items:flex-start;text-align:left}.glc-foot .glc-foot__bottom{flex-direction:column-reverse;align-items:flex-start}}
+</style>
+<footer class="glc glc-foot glc--full">
+<div class="glc-wrap glc-foot__top">
+<a class="glc-foot__brand" href="#glc-top" aria-label="Greenline Lawn and Landscape, back to top"><span class="glc-logo" aria-hidden="true"><span class="glc-logo__word">greenl<span class="glc-logo__i">&#305;<svg class="glc-logo__blade" viewBox="0 0 10 16" aria-hidden="true" focusable="false"><path d="M5 0C9 4 9 11 5 16C1 11 1 4 5 0Z" fill="#f2b705"/></svg></span>ne</span><span class="glc-logo__mow"></span></span></a>
+<div class="glc-foot__contact"><a class="glc-foot__call" href="tel:+12105550136">(210) 555-0136</a><p class="glc-foot__hours">Call or text, Monday to Saturday, 7am to 6pm</p></div>
+</div>
+<div class="glc-wrap"><div class="glc-foot__bottom">
+<p class="glc-foot__legal">© 2026 Greenline Lawn &amp; Landscape. Prices are estimates until the first visit.</p>
+<ul class="glc-foot__nav" aria-label="Footer"><li><a href="#glc-top">Price board</a></li><li><a href="#glc-season">Season</a></li><li><a href="#glc-route">Route days</a></li><li><a href="#glc-book">Book</a></li></ul>
+</div></div>
+</footer>
+<!-- GLC FOOTER END -->
+<p class="demo-credit">Concept for a fictional brand · Design &amp; code by <a href="https://stalska-olga.com.ua/">Olha Stalska</a></p>
+</body>
+</html>
